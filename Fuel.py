@@ -88,23 +88,27 @@ st.markdown("Predict **Emission Category** 🌫️ and **Combustion Quality** �
 # =====================
 # Video Display (Deployment Safe)
 # =====================
-
-# Option 1 – GitHub raw link (keeps autoplay + loop)
-video_url = "https://raw.githubusercontent.com/<Dlyght27>/<Engine-Emission-Combustion-Project>/main/DEMO_ENGINE.mp4"
-
-st.markdown(
-    f"""
-    <video autoplay loop muted playsinline style="width:600px; height:auto; display:block; margin:auto; border-radius:10px;">
-        <source src="{video_url}" type="video/mp4">
-    </video>
-    """,
-    unsafe_allow_html=True,
-)
-
-# Option 2 – Local fallback (if raw link fails, just uncomment below)
 import os
+# make sure you've removed the old HTML/base64 blocks
+
 video_path = os.path.join(os.path.dirname(__file__), "DEMO_ENGINE.mp4")
-st.video(video_path)
+
+# --- optional debug lines (remove after testing) ---
+st.write("Video path:", video_path)
+st.write("Exists on server:", os.path.exists(video_path))
+st.write("Files in app dir:", sorted(os.listdir(os.path.dirname(__file__))))
+# -----------------------------------------------
+
+# Play the video from the repo (autoplay, loop, muted)
+st.video(
+    video_path,
+    format="video/mp4",
+    start_time=0,
+    loop=True,
+    autoplay=True,
+    muted=True,
+    width=600
+)
 
 
 st.title("Engine Simulation Demo")
@@ -299,6 +303,7 @@ Predicts **combustion quality** & **emission levels** using thermodynamic princi
 
     # Display in Streamlit
     st.plotly_chart(fig, use_container_width=True)
+
 
 
 
