@@ -89,16 +89,19 @@ st.markdown("Predict **Emission Category** 🌫️ and **Combustion Quality** �
 # Video Display (Deployment Safe)
 # =====================
 # Path to your video
-import os, base64
+import os
+import base64
+import streamlit as st
 
-# relative path inside repo
+# Path to the video inside the repo
 video_path = os.path.join(os.path.dirname(__file__), "DEMO_ENGINE.mp4")
 
-# Encode and embed video
+# Encode video for HTML embedding
 with open(video_path, "rb") as f:
     video_bytes = f.read()
     encoded_video = base64.b64encode(video_bytes).decode()
 
+# Show custom looping video without controls
 st.markdown(
     f"""
     <video autoplay loop muted playsinline style="width:600px; height:auto; display:block; margin:auto; border-radius:10px;">
@@ -301,6 +304,7 @@ Predicts **combustion quality** & **emission levels** using thermodynamic princi
 
     # Display in Streamlit
     st.plotly_chart(fig, use_container_width=True)
+
 
 
 
