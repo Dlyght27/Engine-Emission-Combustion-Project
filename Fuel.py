@@ -92,11 +92,10 @@ st.markdown("Predict **Emission Category** 🌫️ and **Combustion Quality** �
 import os
 import streamlit as st
 
-# Path to video in videos/ folder
-video_path = os.path.join(os.path.dirname(__file__), "videos", "DEMO_ENGINE_APP.mp4")
+# Path to video
+video_path = os.path.join(os.path.dirname(__file__), "videos", "DEMO_ENGINE.mp4")
 
 if os.path.exists(video_path):
-    # Streamlit's native video player
     st.video(video_path, format="video/mp4", start_time=0)
 else:
     st.error("DEMO_ENGINE.mp4 not found — make sure it is in the videos/ folder in the repo.")
@@ -293,6 +292,7 @@ Predicts **combustion quality** & **emission levels** using thermodynamic princi
 
     # Display in Streamlit
     st.plotly_chart(fig, use_container_width=True)
+
 
 
 
