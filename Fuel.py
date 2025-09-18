@@ -93,7 +93,7 @@ import os
 import streamlit as st
 
 # Path to video
-video_path = os.path.join(os.path.dirname(__file__), "videos", "DEMO_ENGINE.mp4")
+video_path = os.path.join(os.path.dirname(__file__), "videos", "DEMO_ENGINE_APP.mp4")
 
 if os.path.exists(video_path):
     st.video(video_path, format="video/mp4", start_time=0)
@@ -292,6 +292,7 @@ Predicts **combustion quality** & **emission levels** using thermodynamic princi
 
     # Display in Streamlit
     st.plotly_chart(fig, use_container_width=True)
+
 
 
 
