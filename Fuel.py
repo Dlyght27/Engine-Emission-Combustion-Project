@@ -96,10 +96,6 @@ import streamlit as st
 # Path to video in videos/ folder
 video_path = os.path.join(os.path.dirname(__file__), "videos", "DEMO_ENGINE_APP.mp4")
 
-# Debug (you can remove after testing)
-st.write("Video path:", video_path)
-st.write("Exists on server:", os.path.exists(video_path))
-
 if os.path.exists(video_path):
     # Read and encode video as base64
     with open(video_path, "rb") as f:
@@ -310,6 +306,7 @@ Predicts **combustion quality** & **emission levels** using thermodynamic princi
 
     # Display in Streamlit
     st.plotly_chart(fig, use_container_width=True)
+
 
 
 
