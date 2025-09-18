@@ -85,43 +85,26 @@ st.set_page_config(page_title="Engine Emission & Combustion Predictor", layout="
 st.title("🚗 Engine Emission & Combustion Quality Predictor")
 st.markdown("Predict **Emission Category** 🌫️ and **Combustion Quality** 🔥 based on input engine parameters.")
 
-# Path to your video
-import base64
+# =====================
+# Video Display (Deployment Safe)
+# =====================
 
-import os
+# Option 1 – GitHub raw link (keeps autoplay + loop)
+video_url = "https://raw.githubusercontent.com/<your-username>/<repo-name>/main/DEMO_ENGINE.mp4"
 
-# Since the video is in the same folder as your app
-video_path = os.path.join(os.path.dirname(__file__), "DEMO_ENGINE.mp4")
-
-# Inject CSS to resize the Streamlit video player
-st.markdown(
-    """
-    <style>
-    video {
-        width: 600px !important;   /* Fixed width */
-        height: auto !important;   /* Maintain aspect ratio */
-        margin: auto;              /* Center the video */
-        display: block;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-# Encode video for HTML embedding
-with open(video_path, "rb") as f:
-    video_bytes = f.read()
-    encoded_video = base64.b64encode(video_bytes).decode()
-
-# Show custom looping video without controls
 st.markdown(
     f"""
     <video autoplay loop muted playsinline style="width:600px; height:auto; display:block; margin:auto; border-radius:10px;">
-        <source src="data:video/mp4;base64,{encoded_video}" type="video/mp4">
+        <source src="{video_url}" type="video/mp4">
     </video>
     """,
     unsafe_allow_html=True,
 )
+
+# Option 2 – Local fallback (if raw link fails, just uncomment below)
+import os
+video_path = os.path.join(os.path.dirname(__file__), "DEMO_ENGINE.mp4")
+st.video(video_path)
 
 
 st.title("Engine Simulation Demo")
@@ -316,4 +299,5 @@ Predicts **combustion quality** & **emission levels** using thermodynamic princi
 
     # Display in Streamlit
     st.plotly_chart(fig, use_container_width=True)
+
 
