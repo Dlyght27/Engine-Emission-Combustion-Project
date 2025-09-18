@@ -90,15 +90,32 @@ st.markdown("Predict **Emission Category** 🌫️ and **Combustion Quality** �
 # =====================
 # Path to your video
 import os
+import base64
 import streamlit as st
 
-# Path to video
+# Path to video in videos/ folder
 video_path = os.path.join(os.path.dirname(__file__), "videos", "DEMO_ENGINE_APP.mp4")
 
 if os.path.exists(video_path):
-    st.video(video_path, format="video/mp4", start_time=0)
+    # Read and encode video as base64
+    with open(video_path, "rb") as f:
+        video_bytes = f.read()
+        encoded_video = base64.b64encode(video_bytes).decode()
+
+    # Embed video with autoplay + loop + muted
+    st.markdown(
+        f"""
+        <video autoplay loop muted playsinline
+               style="width:600px; height:auto; display:block; margin:auto; border-radius:10px;">
+            <source src="data:video/mp4;base64,{encoded_video}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        """,
+        unsafe_allow_html=True,
+    )
 else:
-    st.error("DEMO_ENGINE.mp4 not found — make sure it is in the videos/ folder in the repo.")
+    st.error("DEMO_ENGINE_APP.mp4 not found — make sure it is in the videos/ folder in the repo.")
+
 
 st.title("Engine Simulation Demo")
 
@@ -292,6 +309,7 @@ Predicts **combustion quality** & **emission levels** using thermodynamic princi
 
     # Display in Streamlit
     st.plotly_chart(fig, use_container_width=True)
+
 
 
 
