@@ -90,7 +90,7 @@ st.markdown("Predict **Emission Category** 🌫️ and **Combustion Quality** �
 # =====================
 
 # Option 1 – GitHub raw link (keeps autoplay + loop)
-video_url = "https://raw.githubusercontent.com/<your-username>/<repo-name>/main/DEMO_ENGINE.mp4"
+video_url = "https://raw.githubusercontent.com/<Dlyght27>/<Engine-Emission-Combustion-Project>/main/DEMO_ENGINE.mp4"
 
 st.markdown(
     f"""
@@ -299,5 +299,6 @@ Predicts **combustion quality** & **emission levels** using thermodynamic princi
 
     # Display in Streamlit
     st.plotly_chart(fig, use_container_width=True)
+
 
 
