@@ -88,7 +88,10 @@ st.markdown("Predict **Emission Category** 🌫️ and **Combustion Quality** �
 # Path to your video
 import base64
 
-video_path = r"C:\Users\ISRAELITE\Downloads\DEMO ENGINE.mp4"
+import os
+
+# Since the video is in the same folder as your app
+video_path = os.path.join(os.path.dirname(__file__), "DEMO_ENGINE.mp4")
 
 # Inject CSS to resize the Streamlit video player
 st.markdown(
@@ -313,3 +316,4 @@ Predicts **combustion quality** & **emission levels** using thermodynamic princi
 
     # Display in Streamlit
     st.plotly_chart(fig, use_container_width=True)
+
