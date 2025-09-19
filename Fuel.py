@@ -93,9 +93,6 @@ import streamlit as st
 import os
 import base64
 
-# Page title
-st.title("Engine Crankshaft Demo")  # Clear and precise
-
 # Path to video
 video_path = os.path.join(os.path.dirname(__file__), "videos", "DEMO_ENGINE_APP.mp4")
 
@@ -122,9 +119,6 @@ if os.path.exists(video_path):
     )
 else:
     st.error("DEMO_ENGINE_APP.mp4 not found — make sure it is in the videos/ folder in the repo.")
-
-
-st.title("Engine Simulation Demo")
 
 # Sidebar Inputs
 with st.sidebar:
@@ -316,6 +310,7 @@ Predicts **combustion quality** & **emission levels** using thermodynamic princi
 
     # Display in Streamlit
     st.plotly_chart(fig, use_container_width=True)
+
 
 
 
